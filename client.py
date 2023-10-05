@@ -12,10 +12,7 @@ result = (service_name, service_login, service_password)
 
 for res in result:
     res = str(res)
-    client.sendall(bytes(res, 'utf-8'))
-    print(res)
-    print(type(res))
-    
+    client.sendall(bytes(res, 'utf-8'))    
     
 data = client.recv(1024).decode('utf-8')
 
