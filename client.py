@@ -10,12 +10,14 @@ service_password = input('Введите пароль: ')
 
 result = (service_name, service_login, service_password)
 
-for res in result:
-    res = str(res)
-    client.sendall(bytes(res, 'utf-8'))    
-    
-data = client.recv(1024).decode('utf-8')
+data = str(result)
 
+
+client.sendall(bytes(data, 'utf-8'))    
+
+data1 = client.recv(1024).decode('utf-8')
+
+print(data1)
 
 
 client.close()

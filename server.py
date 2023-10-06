@@ -17,16 +17,11 @@ cur.execute("""CREATE TABLE IF NOT EXISTS logPas(
     Password TEXT)
 """)
 conn.commit()
-
 #Получение данных с клиента
-while True:
-    data = client_socket.recv(1024).decode('utf-8')
-    print(data)
-    if not data:
-        break
-    
-content = data.encode('utf-8')
+data = client_socket.recv(1024).decode('utf-8')
+data1 = eval(data)
 
-client_socket.send(content)
+cur.execute("INSERT INTO logPas VALUES(?,?,?);", data1)
+conn.commit()
 
 print('Сервер закончил работу')
